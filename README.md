@@ -7,14 +7,21 @@ QUOTIFY is an app that shows you different quotes. This project showcases my pro
 - Display a variety of quotes.
 - Navigate through quotes using previous and next buttons.
 - Share quotes via other applications.
-
+  
 ## Screenshots
 
-![Home Screen]![Q1](https://github.com/SOUMEN-PAL/QUOTIFY/assets/112452467/06e529fe-80c2-460f-a2ad-287fe5750074)
+<div style="display: flex; flex-direction: row;">
+    <div style="flex: 33.33%; padding: 5px;">
+        <img src="https://github.com/SOUMEN-PAL/QUOTIFY/assets/112452467/06e529fe-80c2-460f-a2ad-287fe5750074" alt="Home Screen" style="width: 100%;">
+    </div>
+    <div style="flex: 33.33%; padding: 5px;">
+        <img src="https://github.com/SOUMEN-PAL/QUOTIFY/assets/112452467/ffe90d48-99e9-43bb-8a16-a1a8513b6ef5" alt="Share Screen" style="width: 100%;">
+    </div>
+    <div style="flex: 33.33%; padding: 5px;">
+        <img src="https://github.com/SOUMEN-PAL/QUOTIFY/assets/112452467/d78ab0ef-b5d0-4d1e-bf14-b15e0d29fd16" alt="MVVM Depiction" style="width: 100%;">
+    </div>
+</div>
 
-![Share Screen]![Q2](https://github.com/SOUMEN-PAL/QUOTIFY/assets/112452467/ffe90d48-99e9-43bb-8a16-a1a8513b6ef5)
-
-![MVVM Depiction]![Q3](https://github.com/SOUMEN-PAL/QUOTIFY/assets/112452467/d78ab0ef-b5d0-4d1e-bf14-b15e0d29fd16)
 
 
 ## Video Demo
