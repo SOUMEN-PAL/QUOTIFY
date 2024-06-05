@@ -1,5 +1,6 @@
 package com.example.quotify.appscreens
 
+import android.content.Context
 import android.graphics.drawable.Icon
 import android.util.Log
 import android.widget.Space
@@ -33,6 +34,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -48,7 +50,7 @@ import com.example.quotify.R
 import com.example.quotify.ViewModel.MainViewModel
 
 @Composable
-fun HomeScreen(viewModel: MainViewModel){
+fun HomeScreen(viewModel: MainViewModel , ActivityContext: Context){
     val quote = viewModel.quote
     val index = viewModel.index
     Log.d("index" , "${index.intValue} ha yeh")
@@ -135,9 +137,9 @@ fun HomeScreen(viewModel: MainViewModel){
 
 
             Surface(
-                modifier = Modifier.size(58.dp).offset(y = (-28).dp , x = (-10).dp)
+                modifier = Modifier.size(58.dp).offset(y = (-28).dp , x = (-10).dp).clip(CircleShape)
                     .clickable {
-
+                               viewModel.onShare(ActivityContext)
                     }, // Adjust size as needed
                 shape = CircleShape,
                 color = Color(0xFF1D2674) // Customize background color

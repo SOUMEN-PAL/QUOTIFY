@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModel
 import com.example.quotify.QuoteModel.QuoteModel
 import com.example.quotify.QuoteModel.QuoteModelRepository
 
-class MainViewModel(val context: Context) : ViewModel() {
-    private val _repository : QuoteModelRepository = QuoteModelRepository(context)
+class MainViewModel(Appcontext: Context) : ViewModel() {
+    private val _repository : QuoteModelRepository = QuoteModelRepository(Appcontext)
     private val _index :MutableIntState = mutableIntStateOf(_repository.getIndex().index)
     private val _quote : MutableState<QuoteModel> = mutableStateOf(_repository.getQuote())
 
@@ -30,5 +30,8 @@ class MainViewModel(val context: Context) : ViewModel() {
         quote.value = _repository.getQuote()
     }
 
+    fun onShare(Activitycontext: Context){
+        _repository.onShare(Activitycontext)
+    }
 
 }

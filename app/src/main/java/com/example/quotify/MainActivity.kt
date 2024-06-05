@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
             val mainViewModel : MainViewModel = viewModel(factory = MainViewModelFactory(application))
 
             QuotifyTheme {
-                HomeScreen(viewModel = mainViewModel)
+                HomeScreen(viewModel = mainViewModel , this)
             }
         }
     }
