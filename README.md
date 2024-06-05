@@ -10,15 +10,20 @@ QUOTIFY is an app that shows you different quotes. This project showcases my pro
   
 ## Screenshots
 
-### Image 1: Home Screen
-![Home Screen](https://github.com/SOUMEN-PAL/QUOTIFY/assets/112452467/06e529fe-80c2-460f-a2ad-287fe5750074)
-
-### Image 2: Share Screen
-![Share Screen](https://github.com/SOUMEN-PAL/QUOTIFY/assets/112452467/ffe90d48-99e9-43bb-8a16-a1a8513b6ef5)
-
-### Image 3: MVVM Depiction
-![MVVM Depiction](https://github.com/SOUMEN-PAL/QUOTIFY/assets/112452467/d78ab0ef-b5d0-4d1e-bf14-b15e0d29fd16)
-
+<div style="display: flex; flex-direction: row;">
+    <div style="flex: 33.33%; padding: 5px;">
+        <p align="center">Image 1: Home Screen</p>
+        <img src="https://github.com/SOUMEN-PAL/QUOTIFY/assets/112452467/06e529fe-80c2-460f-a2ad-287fe5750074" alt="Home Screen" style="width: 100%;">
+    </div>
+    <div style="flex: 33.33%; padding: 5px;">
+        <p align="center">Image 2: Share Screen</p>
+        <img src="https://github.com/SOUMEN-PAL/QUOTIFY/assets/112452467/ffe90d48-99e9-43bb-8a16-a1a8513b6ef5" alt="Share Screen" style="width: 100%;">
+    </div>
+    <div style="flex: 33.33%; padding: 5px;">
+        <p align="center">Image 3: MVVM Depiction</p>
+        <img src="https://github.com/SOUMEN-PAL/QUOTIFY/assets/112452467/d78ab0ef-b5d0-4d1e-bf14-b15e0d29fd16" alt="MVVM Depiction" style="width: 100%;">
+    </div>
+</div>
 
 
 ## Video Demo
