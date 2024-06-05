@@ -7,7 +7,10 @@ import android.widget.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+
+
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -85,92 +88,123 @@ fun HomeScreen(viewModel: MainViewModel , ActivityContext: Context){
 
     ) {
         
-        Spacer(modifier = Modifier.height(100.dp))
-        
-        Text(text = "QUOTIFY", fontSize = 40.sp , fontWeight = FontWeight.Bold , color = Color.White)
-
-        Spacer(modifier = Modifier.weight(1f))
-
-
-        Card (
+        Column (
             modifier = Modifier
-                .width(width = 340.dp)
-                .wrapContentHeight(),
-            elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
-
+                .fillMaxSize()
+                .weight(7f),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Column (
-                modifier = Modifier
-                    .padding(8.dp)
 
+
+            Text(text = "QUOTIFY", fontSize = 40.sp , fontWeight = FontWeight.Bold , color = Color.White , modifier = Modifier
+                .weight(2f)
+                .padding(top = 70.dp))
+
+
+
+            Column(
+                modifier = Modifier.fillMaxSize().weight(8f),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Icon(imageVector = Icons.Default.FormatQuote ,
-                    contentDescription = null,
+                Card (
                     modifier = Modifier
-                        .size(48.dp)
-                        .rotate(180f))
+                        .width(width = 340.dp)
+                        .wrapContentHeight()
+                    ,
+                    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
 
-                Text(
-                    text = quote.value.text,
-                    fontSize = 24.sp,
-                    color = Color.DarkGray
-                )
+                ) {
+                    Column (
+                        modifier = Modifier
+                            .padding(8.dp)
 
+                    ) {
+                        Icon(imageVector = Icons.Default.FormatQuote ,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(48.dp)
+                                .rotate(180f))
 
-            }
-
-            Column (
-                verticalArrangement = Arrangement.Bottom ,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-            ) {
-                Text(text = quote.value.author , fontSize = 19.sp , fontWeight = FontWeight.Bold , color = Color.Gray)
-            }
-            Spacer(Modifier.height(12.dp))
-
-        }
-        Row(
-            modifier = Modifier.width(340.dp),
-            horizontalArrangement = Arrangement.End
-        ) {
+                        Text(
+                            text = quote.value.text,
+                            fontSize = 24.sp,
+                            color = Color.DarkGray
+                        )
 
 
-            Surface(
-                modifier = Modifier.size(58.dp).offset(y = (-28).dp , x = (-10).dp).clip(CircleShape)
-                    .clickable {
-                               viewModel.onShare(ActivityContext)
-                    }, // Adjust size as needed
-                shape = CircleShape,
-                color = Color(0xFF1D2674) // Customize background color
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.Share,
-                    contentDescription = "Share",
-                    tint = Color.White, // Customize icon color
-                    modifier = Modifier.padding(8.dp)// Adjust icon size
-                )
-            }
+                    }
 
-        }
-        Spacer(Modifier.weight(1f))
-
-        Row(
-            modifier = Modifier.size(width = 340.dp , height = 100.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(text = "< Previous" , color = Color.White , fontFamily = MyFontFamily , fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.clickable {
-
-                    viewModel.previousQuote()
+                    Column (
+                        verticalArrangement = Arrangement.Bottom ,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
+                    ) {
+                        Text(text = quote.value.author , fontSize = 19.sp , fontWeight = FontWeight.Bold , color = Color.Gray)
+                    }
+                    Spacer(Modifier.height(12.dp))
                 }
-            )
-            Text(text = "Next >" ,color = Color.White ,  fontFamily = MyFontFamily , fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.clickable {
-                    viewModel.nextQuote()
-                })
+
+                Row(
+                    modifier = Modifier.width(340.dp),
+                    horizontalArrangement = Arrangement.End
+                ) {
+
+
+                    Surface(
+                        modifier = Modifier
+                            .size(58.dp)
+                            .offset(y = (-28).dp, x = (-10).dp)
+                            .clip(CircleShape)
+                            .clickable {
+                                viewModel.onShare(ActivityContext)
+                            }, // Adjust size as needed
+                        shape = CircleShape,
+                        color = Color(0xFF1D2674) // Customize background color
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.Share,
+                            contentDescription = "Share",
+                            tint = Color.White, // Customize icon color
+                            modifier = Modifier.padding(8.dp)// Adjust icon size
+                        )
+                    }
+                }
+            }
+
+
+
+
         }
 
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .weight(1f),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Row(
+                modifier = Modifier.size(width = 340.dp , height = 100.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(text = "< Previous" , color = Color.White , fontFamily = MyFontFamily , fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.clickable {
+
+                        viewModel.previousQuote()
+                    }
+                )
+                Text(text = "Next >" ,color = Color.White ,  fontFamily = MyFontFamily , fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.clickable {
+                        viewModel.nextQuote()
+                    })
+            }
+        }
     }
+
+
 }
