@@ -16,6 +16,8 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FormatQuote
@@ -43,9 +45,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.quotify.R
+import com.example.quotify.ViewModel.MainViewModel
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen(viewModel: MainViewModel){
+    val quote = viewModel.quote
+    val index = viewModel.index
+    Log.d("index" , "${index.intValue} ha yeh")
     val MyFontFamily = FontFamily(
         Font(R.font.montserrat_bold, FontWeight.Bold),
         Font(R.font.montserrat_bolditalic, FontWeight.Bold),
@@ -86,13 +92,15 @@ fun HomeScreen(){
 
         Card (
             modifier = Modifier
-                .size(width = 340.dp , height = 250.dp),
+                .width(width = 340.dp)
+                .wrapContentHeight(),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
 
         ) {
             Column (
                 modifier = Modifier
                     .padding(8.dp)
+
             ) {
                 Icon(imageVector = Icons.Default.FormatQuote ,
                     contentDescription = null,
@@ -101,21 +109,21 @@ fun HomeScreen(){
                         .rotate(180f))
 
                 Text(
-                    text = "Uth ke padh le salehvarna gandha katega tera",
+                    text = quote.value.text,
                     fontSize = 24.sp,
                     color = Color.DarkGray
                 )
 
 
             }
-            Spacer(Modifier.weight(1f))
+
             Column (
                 verticalArrangement = Arrangement.Bottom ,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
             ) {
-                Text(text = "By soumen" , fontSize = 19.sp , fontWeight = FontWeight.Bold , color = Color.Gray)
+                Text(text = quote.value.author , fontSize = 19.sp , fontWeight = FontWeight.Bold , color = Color.Gray)
             }
             Spacer(Modifier.height(12.dp))
 
@@ -127,7 +135,7 @@ fun HomeScreen(){
 
 
             Surface(
-                modifier = Modifier.size(58.dp).offset(y = (-24).dp , x = (-10).dp)
+                modifier = Modifier.size(58.dp).offset(y = (-28).dp , x = (-10).dp)
                     .clickable {
 
                     }, // Adjust size as needed
@@ -153,11 +161,12 @@ fun HomeScreen(){
             Text(text = "< Previous" , color = Color.White , fontFamily = MyFontFamily , fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.clickable {
 
+                    viewModel.previousQuote()
                 }
             )
             Text(text = "Next >" ,color = Color.White ,  fontFamily = MyFontFamily , fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.clickable {
-
+                    viewModel.nextQuote()
                 })
         }
 
