@@ -96,15 +96,18 @@ fun HomeScreen(viewModel: MainViewModel , ActivityContext: Context){
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
+            Spacer(Modifier.weight(1f))
 
             Text(text = "QUOTIFY", fontSize = 40.sp , fontWeight = FontWeight.Bold , color = Color.White , modifier = Modifier
                 .weight(2f)
-                .padding(top = 70.dp))
+                )
 
 
 
             Column(
-                modifier = Modifier.fillMaxSize().weight(8f),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(8f),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
