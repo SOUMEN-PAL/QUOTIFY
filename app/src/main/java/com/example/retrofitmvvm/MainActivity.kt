@@ -29,10 +29,14 @@ import com.example.retrofitmvvm.ui.theme.RetrofitMVVMTheme
 import com.example.retrofitmvvm.viewmodels.MainViewModel
 import com.example.retrofitmvvm.viewmodels.MainViewModelFactory
 import com.example.retrofitmvvm.viewmodels.QuoteListState
+import com.example.retrofitmvvm.viewmodels.QuoteViewModel
+import com.example.retrofitmvvm.viewmodels.QuoteViewModelFactory
 import retrofit2.create
+import kotlin.math.log
 
 class MainActivity : ComponentActivity() {
     lateinit var mainViewModel: MainViewModel
+    lateinit var quoteViewModel: QuoteViewModel
 //    val quoteService: QuoteService = RetrofitHelper.getInstance().create(QuoteService::class.java) // Creating a quoteService Instance //
 
 
@@ -44,7 +48,7 @@ class MainActivity : ComponentActivity() {
             val repository = (application as QuoteApplication).quotesRepository
 
             mainViewModel = viewModel(factory = MainViewModelFactory(repository))
-
+            quoteViewModel = viewModel(factory = QuoteViewModelFactory(application))
             RetrofitMVVMTheme {
 //                quotes?.results?.let { results ->
 //                    for (i in results) {
@@ -56,7 +60,7 @@ class MainActivity : ComponentActivity() {
                     verticalArrangement = Arrangement.Center,
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    MyScreen(viewModel = mainViewModel)
+                    MyScreen(viewModel = mainViewModel , quoteViewModel)
                 }
 
             }
@@ -64,14 +68,17 @@ class MainActivity : ComponentActivity() {
     }
 }
 @Composable
-fun MyScreen(viewModel: MainViewModel) {
+fun MyScreen(viewModel: MainViewModel , quoteViewModel: QuoteViewModel) {
     val quoteListState by viewModel.quoteListState.collectAsStateWithLifecycle()
 
     when (quoteListState) {
         is QuoteListState.Loading -> CircularProgressIndicator()
         is QuoteListState.Success -> {
             Text(text = "Worked")
+            quoteViewModel.getData(quoteListState as QuoteListState.Success)
+
         }
         is QuoteListState.Error -> Text("Error: ${(quoteListState as QuoteListState.Error).message}")
     }
 }
+
