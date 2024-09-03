@@ -21,12 +21,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.retrofitmvvm.api.QuoteService
 import com.example.retrofitmvvm.api.RetrofitHelper
 import com.example.retrofitmvvm.db.QuoteDatabase
 import com.example.retrofitmvvm.repository.QuotesRepository
+import com.example.retrofitmvvm.ui.screens.HomeScreen
 import com.example.retrofitmvvm.ui.theme.RetrofitMVVMTheme
 import com.example.retrofitmvvm.viewmodels.MainViewModel
 import com.example.retrofitmvvm.viewmodels.MainViewModelFactory
@@ -52,35 +54,30 @@ class MainActivity : ComponentActivity() {
             mainViewModel = viewModel(factory = MainViewModelFactory(repository))
             quoteViewModel = viewModel(factory = QuoteViewModelFactory(this))
             RetrofitMVVMTheme {
-//                quotes?.results?.let { results ->
-//                    for (i in results) {
-//                        Log.d("Data", i.content)
-//                    }
-//                }
                 Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center,
-                    modifier = Modifier.fillMaxSize()
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    MyScreen(viewModel = mainViewModel , quoteViewModel)
-                }
 
+                    MyScreen(viewModel = mainViewModel, quoteViewModel = quoteViewModel)
+                }
             }
         }
     }
 }
 @Composable
-fun MyScreen(viewModel: MainViewModel , quoteViewModel: QuoteViewModel) {
+fun MyScreen(viewModel: MainViewModel , quoteViewModel: QuoteViewModel , modifier: Modifier = Modifier) {
     val quoteListState by viewModel.quoteListState.collectAsStateWithLifecycle()
+
 
     when (quoteListState) {
         is QuoteListState.Loading -> CircularProgressIndicator()
         is QuoteListState.Success -> {
-            Text(text = "Worked")
             quoteViewModel.getData(quoteListState as QuoteListState.Success)
-
+            HomeScreen(viewModel = quoteViewModel)
 
         }
+
         is QuoteListState.Error -> Text("Error: ${(quoteListState as QuoteListState.Error).message}")
     }
 }

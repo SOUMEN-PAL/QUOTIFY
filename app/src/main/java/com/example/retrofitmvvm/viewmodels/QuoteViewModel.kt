@@ -31,7 +31,7 @@ class QuoteViewModel(private val context: Context) : ViewModel(){
         return if (quotes.isNotEmpty()) {
             quotes[index.intValue]
         } else {
-            Result(1 , "xyz" , "abc" , "dfd" , "sdff" , "sfds" , "sdfs" , 0 )
+            Result(1 , "xyz" , "abc" , "dfd" , "Say Hello To Developer" , "sfds" , "sdfs" , 0 )
         }
     }
 

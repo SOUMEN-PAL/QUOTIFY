@@ -85,6 +85,8 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.2")
 
+    implementation("androidx.compose.material:material-icons-extended:1.6.8")
+
 
 
 }
