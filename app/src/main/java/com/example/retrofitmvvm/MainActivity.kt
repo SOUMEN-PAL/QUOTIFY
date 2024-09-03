@@ -9,12 +9,14 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,7 +50,7 @@ class MainActivity : ComponentActivity() {
             val repository = (application as QuoteApplication).quotesRepository
 
             mainViewModel = viewModel(factory = MainViewModelFactory(repository))
-            quoteViewModel = viewModel(factory = QuoteViewModelFactory(application))
+            quoteViewModel = viewModel(factory = QuoteViewModelFactory(this))
             RetrofitMVVMTheme {
 //                quotes?.results?.let { results ->
 //                    for (i in results) {
@@ -76,6 +78,7 @@ fun MyScreen(viewModel: MainViewModel , quoteViewModel: QuoteViewModel) {
         is QuoteListState.Success -> {
             Text(text = "Worked")
             quoteViewModel.getData(quoteListState as QuoteListState.Success)
+
 
         }
         is QuoteListState.Error -> Text("Error: ${(quoteListState as QuoteListState.Error).message}")

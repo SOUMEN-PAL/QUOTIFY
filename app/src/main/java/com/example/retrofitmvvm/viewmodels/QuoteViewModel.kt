@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.compose.runtime.MutableIntState
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.retrofitmvvm.models.Result
 
@@ -23,7 +25,7 @@ class QuoteViewModel(private val context: Context) : ViewModel(){
         size = quotes.size
     }
 
-
+    var quote : MutableState<Result?> = mutableStateOf(getQuote())
 
     fun getQuote(): Result {
         return if (quotes.isNotEmpty()) {
@@ -35,10 +37,12 @@ class QuoteViewModel(private val context: Context) : ViewModel(){
 
     fun nextQuote(){
         index.intValue = (index.intValue + 1)%size
+        quote.value = getQuote()
     }
 
     fun prevQuote(){
         index.intValue = (index.intValue - 1 + size) % size
+        quote.value = getQuote()
     }
 
     fun onShare() {
