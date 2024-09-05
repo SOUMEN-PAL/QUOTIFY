@@ -68,7 +68,7 @@ class QuotesRepository(
         }
     }
 }
-```kotlin
+```
 
 ## MainViewModel
 
