@@ -108,7 +108,7 @@ sealed class QuoteListState {
     data class Success(val quoteList: QuoteList?) : QuoteListState()
     data class Error(val message: String) : QuoteListState()
 }
-```kotlin
+```
 
 ## Explanation of the ViewModel
 
@@ -130,7 +130,7 @@ interface QuoteDao {
     @Query("SELECT * FROM quotes")
     suspend fun getQuotes(): List<QuoteModel>
 }
-```kotlin
+```
 
 ## Retrofit API Service
 
@@ -141,7 +141,7 @@ interface QuoteService {
     @GET("/quotes")
     suspend fun getQuotes(@Query("page") page: Int): Response<QuoteList>
 }
-```kotlin
+```
 
 ## Share Feature
 
@@ -156,7 +156,7 @@ fun shareQuote(context: Context, quote: QuoteModel) {
     }
     context.startActivity(Intent.createChooser(sendIntent, null))
 }
-```kotlin
+```
 
 ## How to Run
 
@@ -164,7 +164,7 @@ fun shareQuote(context: Context, quote: QuoteModel) {
 
 ```bash
    git clone https://github.com/SOUMEN-PAL/QUOTIFY.git
-```bash
+```
 
 2. Open the project in Android Studio.
 3. Build and run the app on an Android emulator or a physical device.
