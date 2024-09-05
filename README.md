@@ -42,7 +42,9 @@ https://github.com/user-attachments/assets/bba0c7e4-3cb8-4142-b19b-eae27971450a
 <div style="display: flex;">
   <img src="https://github.com/user-attachments/assets/758e1b61-afc9-4cb7-9aa0-8fb0acb7bf27" alt="Screenshot 1" style="width: 32%; margin-right: 1%;">
   <img src="https://github.com/user-attachments/assets/69a44632-cba4-47bd-9401-4f670dd0c27c" alt="Screenshot 2" style="width: 32%; margin-right: 1%;">
-  <img src="https://github.com/user-attachments/assets/56ff1859-fe05-47c3-bb21-65048cffa630
+  <img src="https://github.com/user-attachments/assets/56ff1859-fe05-47c3-bb21-65048cffa630" alt="Screenshot 3" style="width: 32%;">
+</div>
+
 
 
 
