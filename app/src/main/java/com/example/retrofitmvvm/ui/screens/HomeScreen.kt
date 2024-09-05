@@ -201,13 +201,4 @@ fun HomeScreen(modifier: Modifier = Modifier , viewModel: QuoteViewModel) {
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview() {
-    val viewModel = QuoteViewModel(LocalContext.current) // Provide a mock or real ViewModel
-    viewModel.quote.value = Result(1, "xyz", "abc", "dfd", "sdff", "sfds", "sdfs", 0) // Set sample quote data
-    viewModel.index.intValue = 0 // Set sample index
-
-    HomeScreen(viewModel = viewModel)
-}
 

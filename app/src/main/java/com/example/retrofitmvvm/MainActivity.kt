@@ -29,6 +29,7 @@ import com.example.retrofitmvvm.api.RetrofitHelper
 import com.example.retrofitmvvm.db.QuoteDatabase
 import com.example.retrofitmvvm.repository.QuotesRepository
 import com.example.retrofitmvvm.ui.screens.HomeScreen
+import com.example.retrofitmvvm.ui.screens.MyScreen
 import com.example.retrofitmvvm.ui.theme.RetrofitMVVMTheme
 import com.example.retrofitmvvm.viewmodels.MainViewModel
 import com.example.retrofitmvvm.viewmodels.MainViewModelFactory
@@ -52,7 +53,7 @@ class MainActivity : ComponentActivity() {
             val repository = (application as QuoteApplication).quotesRepository
 
             mainViewModel = viewModel(factory = MainViewModelFactory(repository))
-            quoteViewModel = viewModel(factory = QuoteViewModelFactory(this))
+            quoteViewModel = viewModel(factory = QuoteViewModelFactory(this , repository))
             RetrofitMVVMTheme {
                 Column(
                     verticalArrangement = Arrangement.Center,
@@ -65,20 +66,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-@Composable
-fun MyScreen(viewModel: MainViewModel , quoteViewModel: QuoteViewModel , modifier: Modifier = Modifier) {
-    val quoteListState by viewModel.quoteListState.collectAsStateWithLifecycle()
-
-
-    when (quoteListState) {
-        is QuoteListState.Loading -> CircularProgressIndicator()
-        is QuoteListState.Success -> {
-            quoteViewModel.getData(quoteListState as QuoteListState.Success)
-            HomeScreen(viewModel = quoteViewModel)
-
-        }
-
-        is QuoteListState.Error -> Text("Error: ${(quoteListState as QuoteListState.Error).message}")
-    }
-}
-
