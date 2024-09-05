@@ -33,9 +33,22 @@ https://github.com/user-attachments/assets/31ccec40-e0b7-4f4c-a6ed-0ba0447a19a6
 
 https://github.com/user-attachments/assets/bba0c7e4-3cb8-4142-b19b-eae27971450a
 
-![Screenshot_20240905_111756](https://github.com/user-attachments/assets/1f828c13-d513-4674-89ff-29914147ccfa)
-![Screenshot_20240905_111836](https://github.com/user-attachments/assets/71caf29a-c523-402d-906f-1e47afb4db0e)
-![Screenshot_20240905_111817](https://github.com/user-attachments/assets/4df6505e-cfa4-4851-a406-80afa05566b3)
+
+<div style="display: flex;">
+    <div style="flex: 1; padding: 5px;">
+        <img src="[image1_url](https://github.com/user-attachments/assets/1f828c13-d513-4674-89ff-29914147ccfa)" alt="Image 1" style="width: 100%;">
+        <p align="center">Image 1: Description</p>
+    </div>
+    <div style="flex: 1; padding: 5px;">
+        <img src="[image2_url](https://github.com/user-attachments/assets/71caf29a-c523-402d-906f-1e47afb4db0e)" alt="Image 2" style="width: 100%;">
+        <p align="center">Image 2: Description</p>
+    </div>
+    <div style="flex: 1; padding: 5px;">
+        <img src="[image3_url](https://github.com/user-attachments/assets/4df6505e-cfa4-4851-a406-80afa05566b3)" alt="Image 3" style="width: 100%;">
+        <p align="center">Image 3: Description</p>
+    </div>
+</div>
+
 
 ## Project Structure
 
